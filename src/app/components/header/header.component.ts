@@ -4,11 +4,18 @@ import { Component, signal } from '@angular/core';
   selector: 'app-header',
   imports: [],
   template: `
-    <p>
+    <div class="header">
       {{title()}} world!
-    </p>
+    </div>
   `,
-  styles: ``
+  styles: `
+  .header{
+    background-color: grey;
+    color:black;
+    padding:1rem;
+  }
+
+  `
 })
 export class HeaderComponent {
   // title = 'hello'; // this is string literal
