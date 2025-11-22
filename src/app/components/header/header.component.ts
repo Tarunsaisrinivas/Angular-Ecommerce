@@ -4,16 +4,16 @@ import { Component, signal } from '@angular/core';
   selector: 'app-header',
   imports: [],
   template: `
-    <div class="header">
+    <div class="bg-gray-600 text-black">
       {{title()}} world!
     </div>
   `,
   styles: `
-  .header{
-    background-color: grey;
-    color:black;
-    padding:1rem;
-  }
+  // .header{
+  //   background-color: grey;
+  //   color:black;
+  //   padding:1rem;
+  // }
 
   `
 })
