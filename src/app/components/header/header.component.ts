@@ -1,11 +1,13 @@
 import { Component, signal } from '@angular/core';
+import { PrimaryButtonComponent } from "../primary-button/primary-button.component";
 
 @Component({
   selector: 'app-header',
-  imports: [],
+  imports: [PrimaryButtonComponent],
   template: `
-    <div class="bg-gray-600 text-black">
-      {{title()}} world!
+    <div class="bg-slate-100 px-4 py-3 shadow-md text-black flex justify-between items-center">
+     <span>My Store</span>
+     <app-primary-button label="Cart" />
     </div>
   `,
   styles: `
@@ -19,5 +21,5 @@ import { Component, signal } from '@angular/core';
 })
 export class HeaderComponent {
   // title = 'hello'; // this is string literal
-  title = signal<string>('hello'); // this is signal to interpolation
+  // title = signal<string>('hello'); // this is signal to interpolation
 }
