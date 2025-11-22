@@ -4,14 +4,14 @@ import { Component, input, output } from '@angular/core';
   selector: 'app-primary-button',
   imports: [],
   template: `
-   <button (click)="handleButtonClick()">{{ label() }}</button>
+   <button (click)="btnClicked.emit()">{{ label() }}</button>
   `,
   styles: ``
 })
 export class PrimaryButtonComponent {
   label= input('');
   btnClicked = output();
-  handleButtonClick() {
-    this.btnClicked.emit();
-  }
+  // handleButtonClick() {
+  //   this.btnClicked.emit();
+  // } // method1
 }
