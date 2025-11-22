@@ -7,7 +7,7 @@ import { PrimaryButtonComponent } from "../primary-button/primary-button.compone
   template: `
     <div class="bg-slate-100 px-4 py-3 shadow-md text-black flex justify-between items-center">
      <span>My Store</span>
-     <app-primary-button label="Cart" />
+     <app-primary-button label="Cart" (btnClicked)="showButtonClicked()" />
     </div>
   `,
   styles: `
@@ -22,4 +22,8 @@ import { PrimaryButtonComponent } from "../primary-button/primary-button.compone
 export class HeaderComponent {
   // title = 'hello'; // this is string literal
   // title = signal<string>('hello'); // this is signal to interpolation
+
+  showButtonClicked() {
+    console.log('Cart button clicked in Header Component!');
+  }
 }
