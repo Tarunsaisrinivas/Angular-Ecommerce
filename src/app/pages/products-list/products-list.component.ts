@@ -6,23 +6,26 @@ import { ProductCardComponent } from './product-card/product-card.component';
   selector: 'app-products-list',
   imports: [ProductCardComponent],
   template: `
-    <div class="p-8 grid grid-cols-2 gap-4">
-      @for (product of products(); track product.id) {
-      <app-product-card [product]="product" />
-      }
+    <div class="w-full px-4 py-6">
+      <div
+        class="
+          grid 
+          gap-6
+          grid-cols-1 
+          sm:grid-cols-2 
+          lg:grid-cols-3 
+          xl:grid-cols-4
+        "
+      >
+        @for (product of products(); track product.id) {
+        <app-product-card [product]="product" />
+        }
+      </div>
     </div>
   `,
   styles: ``,
 })
 export class ProductsListComponent {
-  // fetch products from fake store api
-  // async ngOnInit() {
-  //   const res = await fetch(
-  //     'https://fakestoreapi.com/products/category/electronics'
-  //   );
-  //   const data = await res.json();
-  //   this.products.set(data);
-  // }
   products = signal<Product[]>([
     {
       id: 1,
