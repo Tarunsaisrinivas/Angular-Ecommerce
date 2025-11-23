@@ -1,4 +1,5 @@
-import { Component, input } from '@angular/core';
+import { CartService } from './../../../services/cart.service';
+import { Component, inject, input } from '@angular/core';
 import { Product } from '../../../models/products.model';
 import { PrimaryButtonComponent } from '../../../components/primary-button/primary-button.component';
 
@@ -6,10 +7,9 @@ import { PrimaryButtonComponent } from '../../../components/primary-button/prima
   selector: 'app-product-card',
   imports: [PrimaryButtonComponent],
   template: `
-    <div class="bg-white shadow-md border rounded-xl p-6 flex flex-col relative">
-
-
-
+    <div
+      class="bg-white shadow-md border rounded-xl  p-6 flex flex-col relative"
+    >
       <img
         [src]="product().image"
         alt="{{ product().title }}"
@@ -17,17 +17,20 @@ import { PrimaryButtonComponent } from '../../../components/primary-button/prima
       />
 
       <div class="flex flex-col mt-2">
-        <span class="text-md font-bold">{{ product().title }}</span>
-        <span class="text-sm">₹{{ product().price }}</span>
+        <span class="text-xl font-bold">{{ product().title }}</span>
+        <span class="text-xl">₹{{ product().price }}</span>
 
-        <app-primary-button label="Add to cart" />
+        <app-primary-button
+          label="Add to cart"
+          (btnClicked)="CartService.addToCart(product())"
+        />
       </div>
-  <span class="absolute top-2 right-3 text-sm font-bold" [class]="product().stock ? 'text-green-500' : 'text-red-500'">
+      <span
+        class="absolute top-2 right-3 text-sm font-bold"
+        [class]="product().stock ? 'text-green-500' : 'text-red-500'"
+      >
         @if (product().stock) {
-          {{ product().stock }} left
-        } @else {
-          Out of Stock
-        }
+        {{ product().stock }} left } @else { Out of Stock }
       </span>
     </div>
   `,
@@ -35,4 +38,5 @@ import { PrimaryButtonComponent } from '../../../components/primary-button/prima
 })
 export class ProductCardComponent {
   product = input.required<Product>();
+  CartService = inject(CartService);
 }

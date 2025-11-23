@@ -4,17 +4,25 @@ import { ProductCardComponent } from './product-card/product-card.component';
 
 @Component({
   selector: 'app-products-list',
-  imports: [ ProductCardComponent],
+  imports: [ProductCardComponent],
   template: `
     <div class="p-8 grid grid-cols-2 gap-4">
       @for (product of products(); track product.id) {
-      <app-product-card [product] = "product" />
+      <app-product-card [product]="product" />
       }
     </div>
   `,
   styles: ``,
 })
 export class ProductsListComponent {
+  // fetch products from fake store api
+  // async ngOnInit() {
+  //   const res = await fetch(
+  //     'https://fakestoreapi.com/products/category/electronics'
+  //   );
+  //   const data = await res.json();
+  //   this.products.set(data);
+  // }
   products = signal<Product[]>([
     {
       id: 1,
@@ -35,7 +43,6 @@ export class ProductsListComponent {
       id: 3,
       title: 'Mens Cotton Jacket',
       price: 55.99,
-
       image: 'https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_t.png',
       stock: 5,
     },
