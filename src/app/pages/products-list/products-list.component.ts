@@ -9,13 +9,11 @@ import { ProductCardComponent } from './product-card/product-card.component';
     <div class="w-full px-4 py-6">
       <div
         class="
-          grid 
-          gap-6
-          grid-cols-1 
-          sm:grid-cols-2 
-          lg:grid-cols-3 
-          xl:grid-cols-4
-        "
+      grid 
+      gap-6
+      grid-cols-1 
+      sm:grid-cols-2
+    "
       >
         @for (product of products(); track product.id) {
         <app-product-card [product]="product" />
